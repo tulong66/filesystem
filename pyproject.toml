@@ -1,0 +1,42 @@
+[project]
+name = "filesystem"
+version = "0.1.0"
+description = "A MCP server project"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.1.2",
+    "pydantic>=2.10.3"
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+filesystem = "filesystem:main"
+
+[tool.coverage.run]
+branch = true
+source = ["filesystem"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+
+[tool.coverage.html]
+directory = "coverage_html_report"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.hatch.envs.default]
+dependencies = [
+    "coverage"
+]
+
+[dependency-groups]
+dev = [
+    "coverage>=7.6.9",
+    "tomli>=2.2.1",
+]
